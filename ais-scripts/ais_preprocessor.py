@@ -6,8 +6,9 @@ def main():
 	# process("Z:/vol01/AIS_linker/Processed_ais/2017/12", True)
 	process("C:/Workspace/Work/AIS_linker/Processed_ais/2018", True)
 
+
 def process(path, recurse=False):
-	outFile = open(os.path.join(path, "condensed_ais.txt"), "w+")
+	outFile = None
 	print("working in folder: " + path)
 	for f in os.listdir(path):
 		if os.path.isdir(os.path.join(path, f)):
@@ -79,8 +80,13 @@ def process(path, recurse=False):
 						outStr += "B,"
 					outStr += str(lat) + ","
 					outStr += str(lon)
+
+					if outFile is None:
+						outFile = open(os.path.join(path, "condensed_ais.txt"), "w+")
 					outFile.write(outStr + "\n")
-	outFile.close()
+
+	if outFile:
+		outFile.close()
 
 
 if __name__ == "__main__":
