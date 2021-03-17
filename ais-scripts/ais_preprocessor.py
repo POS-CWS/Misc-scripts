@@ -4,7 +4,7 @@ import os
 
 def main():
 	# process("Z:/vol01/AIS_linker/Processed_ais/2017/12", True)
-	process("C:/Workspace/Work/AIS_linker/Processed_ais/2018", True)
+	process("C:/workspace/work/ais/onc2019saturna_decoded/2019", True)
 
 
 def process(path, recurse=False):
