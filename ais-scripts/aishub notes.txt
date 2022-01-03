@@ -1,0 +1,4 @@
+By Nicole Le Baron
+Last edited: 2021-08-17
+
+When processing AISHub data, run either the 'aishub to linker tool preprocessor' if the date/time format doesn't have apostrophes and the 'aishub to linker tool preprocessor apostrophe' tool if it does, then run the 'copy_condensed_ais' tool and copy the output folders to the "Z:\vol06\AIS_Linker\Processed_ais" folder for Saturna/appropriate folder based on site location.
