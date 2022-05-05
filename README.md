@@ -1,5 +1,2 @@
 # Misc-scripts
-A collection of ad-hoc processing scripts, saved for future reference.
-
-Multiply_Raster_Match.py
-- Created to multiply rasters in folder1 with rasters in folder2 that have the same name
+A collection of ad-hoc processing scripts. Many of these were single-use, others have been recurringly used (for example, to preprocess AIS data from a specific source). These have been saved primarily for future reference, not with the intention of being useable as-is.
