@@ -28,7 +28,7 @@ def main():
 	process()
 	# process("C:/Users/grego/Desktop/unsorted/ais_receiver.db2")
 	print("AIS points successfully parsed:", goodLines)
-	print("points unsuccessfully parsed (if this is big, double check script):", badLines)
+	print("points unsuccessfully parsed (if this is a big percent, double check script):", badLines)
 	print("points successfully parsed, but skipped due to duplicate mmsi/time:", skipLines)
 
 
@@ -37,6 +37,7 @@ def process():
 
 	# This object will automatically seek the correct file when we write to it
 	rightFile = file_writer(destination)
+	savedPoints = {}
 
 	for filepath in get_file_list(source):
 		with open(filepath, 'r') as infile:
@@ -83,8 +84,14 @@ def process():
 					badLines += 1
 					continue
 
-				goodLines += 1
 				timeStr = "{}-{}-{}_{}-{}-00".format(*t)
+				if (mmsi, timeStr) in savedPoints:
+					skipLines += 1
+					continue
+
+				goodLines += 1
+				savedPoints[(mmsi, timeStr)] = True
+
 				dateTuple = t[:3]
 				rightFile.write(dateTuple, timeStr, mmsi, isA, "{:6f}".format(lat), "{:6f}".format(lon))
 
