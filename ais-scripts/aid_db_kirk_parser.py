@@ -1,7 +1,6 @@
 import os
 import datetime
 import sqlite3
-from pyproj import Transformer
 
 destination = "C:/workspace/work/0 coral-cws github/AIS-linker/processed_ais_kirk"
 
@@ -25,8 +24,6 @@ def main():
 
 def process(filename):
 	global countPoints, countA, countB, countSkipped
-	# bc algers to lat/lon
-	transformer = Transformer.from_crs("EPSG:3005", "EPSG:4326")
 	# This object will automatically seek the correct file when we write to it
 	rightFile = file_writer(destination)
 
